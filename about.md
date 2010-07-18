@@ -1,6 +1,6 @@
 ---
-title: Describe flaviusb
-layout: Container
+title: "Describe flaviusb"
+layout: container
 ---
 
 About Justin
