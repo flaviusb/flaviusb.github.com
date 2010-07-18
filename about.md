@@ -6,10 +6,6 @@ layout: container
 About Justin
 ============
 
-Justin is presently enjoying programming, larp and electronic music.
+Justin is presently enjoying [programming](http://github.com/flaviusb), [larp](http://nexus.gen.nz) and electronic music.
 
-Scala is a welcome relief from the pain that was the cobbled together JS/C++/XUL codebase.
-
-He is one of the Storytellers of [Nexus](http://nexus.gen.nz "Nexus: Auckland Awakenings"), a Mage: The Awakening Larp set in Auckland, New Zealand.
-
-
+He has some strong opinions, which he will get around to blogging about eventually.
