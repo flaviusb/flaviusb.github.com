@@ -27,7 +27,7 @@ PHP and SQL developer for FindMeAPart Ltd
 ###July through November 2006###
 Tutor and Exam marker for the Philosophy Department of Auckland University
 
-###Responsibilities###10 - Voyager
+###Responsibilities###
 - Running tutorials for Philosophy 101, Introduction to Logic
 - Marking test scripts for Philosophy 101
 
