@@ -2,8 +2,6 @@ header, footer, aside, nav, article {
   display: block;
 }
 
-body { font-family: 'Inconsolata' }
-
 .pipevar { color: #6a5acd }
 .prevar { color: #008b8b }
 .comment { color: #0000ff }
