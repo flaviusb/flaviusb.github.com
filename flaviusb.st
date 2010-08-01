@@ -23,4 +23,4 @@ flaviusb =: AnaphoricCollectionBuilder new
     name: 'LL' repo: 'http://github.com/flaviusb/LL' description: 'An experiment in web programming with pg''s Arc';
     name: 'other' repo: 'http://github.com/flaviusb' description: 'The place my other code goes'.;
   larp: 'http://nexus.gen.nz';
-  cv.
+  cv: 'http://flaviusb.net/cv'.
