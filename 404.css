@@ -1,0 +1,4 @@
+.huge { font-size: 34pt; }
+.centered { margin-left: auto; margin-right: auto; }
+.wtf, a.wtf { color: #000000; text-decoration: none; }
+a:hover { text-decoration: underline; color: blue;}

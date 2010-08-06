@@ -2,7 +2,7 @@
 layout: container
 title: (flaviusb get blog) each [entry | Transcript print entry]
 ---
-Filler
+
 
 <ul class="posts">
     {% for post in site.posts %}
