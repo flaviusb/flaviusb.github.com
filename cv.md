@@ -15,7 +15,7 @@ Email: justin.marsh@flaviusb.net
 Javascript and C++ developer for the [Auckland Bioengineering Institute](http://www.abi.auckland.ac.nz/uoa/)
 
 ##Responsibilities##
-- Developing [a cross platform desktop application](opencell.org) for simulation and editing of biological models in the CellML format
+- Developing [a cross platform desktop application](http://opencell.org) for simulation and editing of biological models in the CellML format
 - Writing showcase applications in Scala as part of next generation platform selection
 - Minor work on an API for using CellML
 - Miscellaneous other tooling, including writing a dev environment setup tool in Ruby for a difficult to replicate environment, writing perl and scala scripts for automatic transformation of cellml models, and writing and maintaining the build toolchain, in Python, Bash, makefiles, and NSIS.
