@@ -5,6 +5,7 @@ header, footer, aside, nav, article {
 .pipevar { color: #6a5acd }
 .prevar { color: #008b8b }
 .comment { color: #0000ff }
+a { color: #000000; text-decoration: none; }
 .string, .string a { color: #ff00ff; text-decoration: none; }
 a:hover { text-decoration: underline; color: blue;}
 .escape, .escape a { color: #6a5acd;  }
