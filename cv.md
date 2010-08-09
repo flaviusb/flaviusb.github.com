@@ -12,10 +12,14 @@ Email: justin.marsh@flaviusb.net
 ##Employment##
 
 ###2007 through 2010###
-Javascript and C++ developer for the Auckland Bioengineering Institute
+Javascript and C++ developer for the [Auckland Bioengineering Institute](http://www.abi.auckland.ac.nz/uoa/)
 
 ##Responsibilities##
-- Developing a cross platform desktop application for simulation and editing of biological models
+- Developing [a cross platform desktop application](opencell.org) for simulation and editing of biological models in the CellML format
+- Writing showcase applications in Scala as part of next generation platform selection
+- Minor work on an API for using CellML
+- Miscellaneous other tooling, including writing a dev environment setup tool in Ruby for a difficult to replicate environment, writing perl and scala scripts for automatic transformation of cellml models, and writing and maintaining the build toolchain, in Python, Bash, makefiles, and NSIS.
+- Representing the Institute at conferences and overseas, such as the [3rd MEI International Symposium](http://www.physiome.jp/documents/the_3rd_MEI_international_symposium/the_3rd_MEI_IS.html)
 
 ###2006 through 2007###
 PHP and SQL developer for FindMeAPart Ltd
@@ -47,7 +51,7 @@ Exam marker for the Philosophy Department of Auckland University
 
 ##Technical Skills##
 
-I am familiar with Javascript, C++, Scala, and Java. I have a passing familiarity with Perl, PHP, Smalltalk, Matlab, and shell script. I prefer to use Vim and Git on Linux for development. I use LaTeX and Markdown for document authoring.
+I am familiar with Javascript, C++, Scala, and Java. I have a passing familiarity with Perl, Python, PHP, Smalltalk, Matlab, shell script, and makefiles. I prefer to use Vim and Git on Linux for development. I use LaTeX and Markdown for document authoring.
 
 ##Other Interests##
 
