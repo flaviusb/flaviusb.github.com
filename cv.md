@@ -17,7 +17,7 @@ Javascript and C++ developer for the [Auckland Bioengineering Institute](http://
 ##Responsibilities##
 - Developing [a cross platform desktop application](http://opencell.org) for simulation and editing of biological models in the CellML format
 - Writing showcase applications in Scala as part of next generation platform selection
-- Minor work on an API for using CellML
+- Minor work on an API for editing, simulating, validating, and generating code from CellML
 - Miscellaneous other tooling, including writing a dev environment setup tool in Ruby for a difficult to replicate environment, writing perl and scala scripts for automatic transformation of cellml models, and writing and maintaining the build toolchain, in Python, Bash, makefiles, and NSIS.
 - Representing the Institute at conferences and overseas, such as the [3rd MEI International Symposium](http://www.physiome.jp/documents/the_3rd_MEI_international_symposium/the_3rd_MEI_IS.html)
 
@@ -51,7 +51,7 @@ Exam marker for the Philosophy Department of Auckland University
 
 ##Technical Skills##
 
-I am familiar with Javascript, C++, Scala, Java, and Arc Lisp. I have a passing familiarity with Python, Perl, PHP, Smalltalk, Matlab, shell script, and makefiles. I prefer to use Vim and Git on Linux for development. I use LaTeX and Markdown for document authoring.
+I am familiar with Javascript, C++, Scala, Java, and Arc Lisp. I have a passing familiarity with Ruby, Python, Perl, PHP, Smalltalk, Matlab, shell script, and makefiles. I prefer to use Vim and Git on Linux for development. I use LaTeX and Markdown for document authoring.
 
 ##Other Interests##
 
