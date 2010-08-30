@@ -51,7 +51,7 @@ Exam marker for the Philosophy Department of Auckland University
 
 ##Technical Skills##
 
-I am familiar with Javascript, C++, Scala, Java, and Arc Lisp. I have a passing familiarity with Ruby, Python, Perl, PHP, Smalltalk, Matlab, shell script, and makefiles. I prefer to use Vim and Git on Linux for development. I use LaTeX and Markdown for document authoring.
+I am familiar with Javascript, C++, Scala, Java, and Arc Lisp. I have a passing familiarity with Ruby, Python, Perl, PHP, Smalltalk, Matlab, shell script, and makefiles. I prefer to use Gvim and Git on Linux for development. I use LaTeX and Markdown for document authoring.
 
 ##Other Interests##
 
