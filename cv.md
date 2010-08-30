@@ -18,7 +18,7 @@ Javascript and C++ developer for the [Auckland Bioengineering Institute](http://
 - Developing [a cross platform desktop application](http://opencell.org) for simulation and editing of biological models in the CellML format
 - Writing showcase applications in Scala as part of next generation platform selection
 - Minor work on an API for editing, simulating, validating, and generating code from CellML
-- Miscellaneous other tooling, including writing a dev environment setup tool in Ruby for a difficult to replicate environment, writing perl and scala scripts for automatic transformation of cellml models, and writing and maintaining the build toolchain, in Python, Bash, makefiles, and NSIS.
+- Miscellaneous other tooling, including writing a dev environment setup tool in Ruby for a difficult to replicate environment, writing perl and scala scripts for automatic transformation of cellml models, and extending and maintaining the build toolchain, in Python, Bash, makefiles, and NSIS.
 - Representing the Institute at conferences and overseas, such as the [3rd MEI International Symposium](http://www.physiome.jp/documents/the_3rd_MEI_international_symposium/the_3rd_MEI_IS.html)
 
 ###2006 through 2007###
