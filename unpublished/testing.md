@@ -4,9 +4,14 @@ title: Test case management software
 ---
 
 - Possibly a thing to handle groups of linked documents, with syntactic sugar on top to specialise for given subtasks
-    - Common specialisations: smarter context dependant merging - (ie of issues, blog posts, test sets)
+    - Common specialisations: smarter context dependant merging - (ie of issues, blog posts, test sets/results, slides)
     - Attatchments to convert into 'active' form (ie -&gt;Gollum, -&gt;gh-issues/Ticgit -&gt;'something yet to be invented for testing')
     - Syntactic sugar for eg checking out a task, amending/publishing a blog post
+        - Which all amounts to git mv unpublished/a \_posts/${SLUG}-a &amp;&amp; git commit \_posts/${SLUG}-a -m "Publish ${a}"
+
+- Mini documents should be markup + a yaml header. The header can either be appended to the file, or can be a file with the same base name and a '.yaml' extenstion
+
+- Some amount of arbitrary structure; for Gollum, it is *\_unpublished* and *\_posts*, for gh-issues it is 
 
 - Commmand line
 - Git backed
