@@ -16,3 +16,7 @@ title: Thoughts on Syntax Highlighting
 - Types, typeclasses
 - ASTs? Macros? Lecros? Embedded DSLs, or simply embedded other languages? Markdown inside comments or docstrings?
 
+Grammar first, then AST, then syntax highlighting, then grammar.
+Yes, I know that forms a circle.
+
+
