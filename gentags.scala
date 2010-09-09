@@ -59,7 +59,7 @@ object gentags {
 title: "Pages tagged '"""+ tag +"""'"
 layout: tag
 ---
-""" + posts.foldLeft("")((head, post) => head + "- ["+post._2+"](http://flaviusb.net/blog/"+slugify(post._1)+")\n")
+""" + posts.foldLeft("")((head, post) => head + "- ["+post._2+"](http://flaviusb.net/"+slugify(post._1)+")\n")
 //"""
 //"""
       fout.write(page)
