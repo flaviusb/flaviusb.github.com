@@ -9,7 +9,7 @@ tags:
 These thoughts are supposed to be a flog for language design, as without a new language they probably don't make a whole lot of sense.
 
 
-- Some highlighting should be just to show different quoting and interpolation regimes ie "string", 'string', """string""", /regex/,  &lt;bare words&rt;, numbers, bitstrings/bitfields, vstrings?
+- Some highlighting should be just to show different quoting and interpolation regimes ie "string", 'string', """string""", /regex/,  &lt;bare words&gt;, numbers, bitstrings/bitfields, vstrings?
 - Possibly instead, think of it as a view for 'literals'?
 - What about stupid literals, like literal xml?
 - Symbols? ie :symbol
