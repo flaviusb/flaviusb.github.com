@@ -85,8 +85,7 @@ object gentags {
     for((tag, posts) <- tags2posts) {
       var tagfile = new File("tags/" + tag + ".xml")
       var fout = new FileWriter(tagfile);
-      var page = """
----
+      var page = """---
 layout: nil
 tag: '"""+tag+"""'
 ---
@@ -121,8 +120,7 @@ tag: '"""+tag+"""'
       fout.close
       tagfile = new File("tags/" + tag + ".html")
       fout = new FileWriter(tagfile);
-      page = """
----
+      page = """---
 layout: nil
 tag: '"""+tag+"""'
 ---
