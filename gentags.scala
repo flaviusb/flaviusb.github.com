@@ -53,14 +53,30 @@ object gentags {
     }
     println(tags2posts)
     for((tag, posts) <- tags2posts) {
-      var tagfile = new File("tags/" + tag + ".md")
+      var tagfile = new File("tags/" + tag + ".html")
       var fout = new FileWriter(tagfile);
-      val page = """---
-title: "Pages tagged '"""+ tag +"""'"
-layout: tag
----
-""" + posts.foldLeft("")((head, post) => head + "- ["+post._2+"](http://flaviusb.net/"+slugify(post._1)+")\n")
-//"""
+      val page = """
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Pages tagged '"""+ tag +"""'</title>
+    <link rel="stylesheet" type="text/css" href="http://flaviusb.net/style.css"/>
+    <link rel="stylesheet" type="text/css" href="http://flaviusb.net/container.css"/>
+    <link rel="stylesheet" type="text/css" href="http://flaviusb.net/mono.css"/>
+    <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="http://flaviusb.net/favicon.ico" type="image/x-icon">
+    <link href='http://flaviusb.net/tags/"""+tag+""".xml'  type="application/atom+xml" rel="alternate" title='Blog Atom Feed for tag: """+tag+"""' />
+    <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+  </head>
+  <body>
+    """ + posts.foldLeft("<ol>\n")((head, post) => head + "      <li><a href='http://flaviusb.net/"+slugify(post._1)+"'>"+post._2+"</a></li>\n") + """
+    </ol>
+  </body>
+</html>
+"""
 //"""
       fout.write(page)
       fout.flush
