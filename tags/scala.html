@@ -18,6 +18,7 @@ tag: scala
     <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
   </head>
   <body>
+    <h2>Posts tagged: {{ page.tag }}</h2> 
     <ul class="posts">
     {% for post in site.posts %}
     {% if post.tags contains page.tag %}
