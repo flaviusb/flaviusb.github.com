@@ -19,7 +19,7 @@ ul.posts li {
   line-height: 1.75em;
 }
 
-ul.posts span {
+ul.posts span, ul.posts span a {
   color: #aaa;
   font-size: 80%;
 }
