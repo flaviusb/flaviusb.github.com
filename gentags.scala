@@ -87,7 +87,7 @@ object gentags {
       var fout = new FileWriter(tagfile);
       var page = """---
 layout: nil
-tag: '"""+tag+"""'
+tag: """+tag+"""
 ---
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
@@ -122,7 +122,7 @@ tag: '"""+tag+"""'
       fout = new FileWriter(tagfile);
       page = """---
 layout: nil
-tag: '"""+tag+"""'
+tag: """+tag+"""
 ---
 <?xml version="1.0"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
