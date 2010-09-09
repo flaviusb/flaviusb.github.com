@@ -5,7 +5,6 @@ layout: container
 
 {{ content }}
 
-{% for tag in page.tags %}<a href="http://flaviusb.net/tags/{{ tag }}">{{ tag }}</a>{% unless forloop.last %}  |  {% endunless %}{% endfor %}  
-
+{% for tag in page.tags %}<a href="http://flaviusb.net/tags/{{ tag }}">{{ tag }}</a>{% unless forloop.last %}  |  {% endunless %}{% endfor %} <br>
 
 <a href="http://flaviusb.net">Home</a>   |   <a href="http://flaviusb.net/blog">Blog</a>   |   <a href="http://github.com/flaviusb">Code</a>
