@@ -7,7 +7,7 @@ tags: [ 'rant', 'fiction', 'mage' ]
 Please be aware, this is a work of fiction.
 
 Or, why the world is horribly, irredeemably broken, and must be destroyed
-=========================================================================
+-------------------------------------------------------------------------
 
 - The nature of time
 - The (necessary) existance of Death
