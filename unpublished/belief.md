@@ -17,3 +17,5 @@ Lies connection with belief
 Brain as expectation-maximising
 reasonable reason to assume that with these caveats, habitully lying will cause me to acquire beliefs through a non-justified means.
 Habitual exaggeration may have lead to my current difficulties with estimation.
+
+Problems with consistency and completeness of metatheory, reasoning, power, multimodal systems...
