@@ -4,7 +4,7 @@ title: Belief
 ---
 
 Belief is not closed under entailment, nor is it reflective.
-eg possibly L(x => y) does not entail Lx => Ly must think about this example.
+eg possibly L(x =&amp; y) does not entail Lx =&amp; Ly must think about this example.
 
 LLx does not imply Lx
 Lx does not imply x
