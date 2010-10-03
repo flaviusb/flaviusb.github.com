@@ -1,6 +1,8 @@
 ---
 title: "What I really want out of OOP"
 layout: post
+tags:
+- programming
 ---
 
 I want to be able to designate a delegate for a certain interface on a class ie

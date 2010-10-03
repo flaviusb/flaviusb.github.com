@@ -1,6 +1,9 @@
 ---
 layout: post
 title: Belief
+tags:
+- rant
+- philosophy
 ---
 
 Belief is not closed under entailment, nor is it reflective.
