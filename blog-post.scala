@@ -35,9 +35,10 @@ object blog_post {
           usage
         else
           args(1) match {
-            case "tags" => tags_usage
-            case "ls"   => ls_usage
-            case _      => usage
+            case "tags"    => tags_usage
+            case "ls"      => ls_usage
+            case "publish" => publish_usage
+            case _         => usage
           }
       }
       case "ls"   => {
@@ -56,8 +57,9 @@ object blog_post {
         })
         ls(verbose, show_published, show_unpublished, pattern)
       }
-      case "tags" => tags
-      case _      => usage
+      case "publish" => publish(args.slice(1, args.length): _*)
+      case "tags"    => tags
+      case _         => usage
     }
   }
   def usage = {
@@ -75,6 +77,24 @@ Usage: blog.sh [--version] [--help] COMMAND [Arguments]
     untag    - Remove tags from a post
     
 """)
+  }
+  def publish_usage = {
+    println("""
+Usage: blog.sh publish [name*]
+  Publish each named blog entry.
+""")
+  }
+  def publish(names: String*) = {
+    names.foreach(name => {
+      val dp = new PB("date", "+%Y-%m-%d-").start
+      val out = dp.getInputStream()
+      dp.waitFor
+      var date: Array[Byte] = new Array[Byte](out.available)
+      out.read(date)
+      var date_s = new String(date)
+      new PB("git", "mv", "unpublished/"+name, "_posts/"+date_s+name).start.waitFor
+      new PB("git", "commit", "unpublished/"+name, "_posts/"+date+name, "-m", "Post "+name).start.waitFor
+    })
   }
   def ls_usage = {
     println("""
