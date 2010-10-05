@@ -100,6 +100,25 @@ object blog_post {
             untag(published, unpublished, stack(0).r, stack.slice(1, stack.length): _*)
         }
       }
+      case "mp"     => {
+        var defer = false
+        var title = ""
+        var tags = Array("")
+        var body = ""
+        var stack = args.slice(1, args.length)
+        var skip = false;
+        var die = false
+        args.slice(1, args.length).foreach(s => if (! skip) s match {
+          case "-d"          => { stack = stack.slice(1, stack.length); defer = true  }
+          case "-t"          => { if (stack.length<1) { die = true } else { title = stack(1); stack = stack.slice(2, stack.length); skip = true; }  }
+          case "-@"          => { if (stack.length<1) { die = true } else { tags = stack(1).split(","); stack = stack.slice(2, stack.length); skip = true; } }
+          case _ => 
+        } else skip = false)
+        if (! die)
+          mp(defer, title, tags, if (stack.length > 0) stack(0) else "")
+        else
+          mp_usage
+      }
       case _         => usage
     }
   }
@@ -112,12 +131,45 @@ Usage: blog.sh [--version] [--help] COMMAND [Arguments]
     ls       - Show list of blogs
     tag      - Add tags to a post
     tags     - Regenerates tags from yaml headers in published posts.
-    mp       - Make a micro post from standard in
+    mp       - Make a micro post from the command line
     post     - Make a new unpublished post
     publish  - Publish an unpublished post
     untag    - Remove tags from a post
     
 """)
+  }
+  def mp_usage = {
+    println("""
+Usage: blog.sh mp [-d] [-t title] [-@ tags] [BODY]
+  Publish a snippet from the command line
+    -d        Defer publication (ie place this in unpublished).
+    -t title  Title the post title. Default is Untitled.
+    -@ tags   Comma separated list of tags.
+    [BODY]    A quoted body of the post. If absent, read from standard in.
+""")
+  }
+  def mp(defer: Boolean = false, title: String = "Untitled", tags: Array[String] = Array(""), body: String = "") = {
+   val header = """---
+layout: post
+title: """ + title +"""
+tags:""" + tags.foldLeft("")((x:String, y: String) => x + "\n- " + y) + """
+---
+"""
+    println(header)
+    var body2 = body
+    if (body == "") {
+      println("Enter blog post. Finish with a newline.")
+      body2 = readLine
+    }
+    val name = title.replaceAll(" ", "-") + ".md"
+    val date_s = s_date
+    var path = (if (defer) { "unpublished/" } else { "_posts/" + date_s })
+    val file = new File(path + name)
+    var fout = new FileWriter(file)
+    fout.write(header)
+    fout.write(body2)
+    fout.flush
+    fout.close
   }
   def publish_usage = {
     println("""
@@ -125,16 +177,20 @@ Usage: blog.sh publish [name*]
   Publish each named blog entry.
 """)
   }
+  def s_date = {
+    val dp = new PB("date", "+%Y-%m-%d-").start
+    val out = dp.getInputStream()
+    dp.waitFor
+    var date: Array[Byte] = new Array[Byte](out.available)
+    out.read(date)
+    var date_s = new String(date.slice(0, date.length - 1))
+    date_s
+  }
   def publish(names: String*) = {
-    names.foreach(name => {
-      val dp = new PB("date", "+%Y-%m-%d-").start
-      val out = dp.getInputStream()
-      dp.waitFor
-      var date: Array[Byte] = new Array[Byte](out.available)
-      out.read(date)
-      var date_s = new String(date)
+    names.foreach(name => { 
+      var date_s = s_date
       new PB("git", "mv", "unpublished/"+name, "_posts/"+date_s+name).start.waitFor
-      new PB("git", "commit", "unpublished/"+name, "_posts/"+date+name, "-m", "Post "+name).start.waitFor
+      new PB("git", "commit", "unpublished/"+name, "_posts/"+date_s+name, "-m", "Post "+name).start.waitFor
     })
   }
   def ls_usage = {
