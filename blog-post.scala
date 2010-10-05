@@ -28,7 +28,7 @@ object blog_post {
       usage
       return
     }
-    val help = "(help|-h|--help|-?|/h)".r
+    val help = "(help|-h|--help|-\\?|/\\?|/h)".r
     args(0) match {
       case help(opt) => {
         if (args.length == 1)
@@ -37,6 +37,8 @@ object blog_post {
           args(1) match {
             case "tags"    => tags_usage
             case "tag"     => tag_usage
+            case "untag"      => untag_usage
+            case "mp"      => mp_usage
             case "ls"      => ls_usage
             case "publish" => publish_usage
             case _         => usage
