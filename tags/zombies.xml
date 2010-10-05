@@ -1,0 +1,30 @@
+---
+layout: nil
+tag: zombies
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+ 
+ <title>Justin (:flaviusb) Marsh</title>
+ <link href="http://flaviusb.net/tags/{{ page.tag }}.xml" rel="self"/>
+ <link href="http://flaviusb.net"/>
+ <updated>{{ site.time | date_to_xmlschema }}</updated>
+ <id>http://flaviusb.net/tags/{{ page.tag }}</id>
+ <author>
+   <name>Justin (:flaviusb) Marsh</name>
+   <email>justinius.marsh@gmail.com</email>
+ </author>
+
+ {% for post in site.posts %}
+ {% if post.tags contains page.tag %}
+ <entry>
+   <title>{{ post.title }}</title>
+   <link href="http://flaviusb.net{{ post.url }}"/>
+   <updated>{{ post.date | date_to_xmlschema }}</updated>
+   <id>http://flaviusb.net{{ post.id }}</id>
+   <content type="html">{{ post.content | xml_escape }}</content>
+ </entry>
+ {% endif %}
+ {% endfor %}
+ 
+</feed>
