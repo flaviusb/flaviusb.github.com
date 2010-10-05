@@ -221,9 +221,9 @@ Usage: blog.sh tag [-p|-u|-a] [pattern] [tag*]
     println("""
 Usage: blog.sh untag [-p|-u|-a] [pattern] [tag*]
     Remove tags from the yaml headers of posts which meet pattern.
-      -p             Only add to published posts
-      -u  (default)  Only add to unpublished posts
-      -a             Add to any posts
+      -p             Only remove from published posts
+      -u  (default)  Only remove from unpublished posts
+      -a             Remove from any posts
 """)
   }
   def remove_tags(f: File, tags: String*) = {
