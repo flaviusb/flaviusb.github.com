@@ -67,12 +67,12 @@ Usage: blog.sh [--version] [--help] COMMAND [Arguments]
     help     - Get help for a particular command
     init     - Create a new empty blog
     ls       - Show list of blogs
-    tag      - Tag a post
+    tag      - Add tags to a post
     tags     - Regenerates tags from yaml headers in published posts.
     mp       - Make a micro post from standard in
-    post     - Make a
-    publish  -
-    untag    - 
+    post     - Make a new unpublished post
+    publish  - Publish an unpublished post
+    untag    - Remove tags from a post
     
 """)
   }
