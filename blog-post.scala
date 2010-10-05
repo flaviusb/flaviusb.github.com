@@ -5,7 +5,7 @@ import java.nio._
 import java.lang.{ProcessBuilder => PB}
 import scala.util.matching.Regex
 
-import org.yaml.snakeyaml.Yaml
+import org.yaml.snakeyaml.{Yaml, DumperOptions}
 
 object blog_post {
   def slugify(fname: String): String = {
@@ -36,6 +36,7 @@ object blog_post {
         else
           args(1) match {
             case "tags"    => tags_usage
+            case "tag"     => tag_usage
             case "ls"      => ls_usage
             case "publish" => publish_usage
             case _         => usage
@@ -59,6 +60,26 @@ object blog_post {
       }
       case "publish" => publish(args.slice(1, args.length): _*)
       case "tags"    => tags
+      case "tag"     => {
+        if(args.length < 3)
+          tag_usage
+        else
+        {
+          var published = false
+          var unpublished = true
+          var stack = args.slice(1, args.length)
+          stack(0) match {
+            case "-a"          => { stack = stack.slice(1, stack.length); published = true;  unpublished = true  }
+            case "-u"          => { stack = stack.slice(1, stack.length); published = false; unpublished = true  }
+            case "-p"          => { stack = stack.slice(1, stack.length); published = true;  unpublished = false }
+            case _ => 
+          }
+          if (stack.length < 2)
+            tag_usage
+          else
+            tag(published, unpublished, stack(0).r, stack.slice(1, stack.length): _*)
+        }
+      }
       case _         => usage
     }
   }
@@ -115,6 +136,66 @@ Usage: blog.sh ls [-t|-v] [-p|-u|-a] [pattern]
       published.foreach(x => x.getName match { case pattern() => println(if (verbose) x.getName else deslugify(x.getName)); case _ =>  })
     if (show_unpublished)
       unpublished.foreach(x => x.getName match { case pattern() => println(x.getName); case _ =>  })
+  }
+  def tag_usage = {
+    println("""
+Usage: blog.sh tag [-p|-u|-a] [pattern] [tag*]
+    Add tags to the yaml headers of posts which meet pattern.
+      -p             Only add to published posts
+      -u  (default)  Only add to unpublished posts
+      -a             Add to any posts
+""")
+  }
+  def add_tags(f: File, tags: String*) = {
+    println("Tagging "+f.getName)
+    type Yml = java.util.LinkedHashMap[String, Any]
+    //var data: MutableList[(String, Yml)] = new MutableList[(String, Yml)]()
+    var src = Source.fromFile(f)
+    var lines = src.getLines()
+    var line = lines.next
+    if (line != "---")
+      System.exit(1);
+    var buf: StringBuilder = new StringBuilder()
+    line = lines.next
+    while(line != "---") {
+      buf = buf.append(line + "\n")
+      line = lines.next
+    }
+    var rest: scala.collection.mutable.Buffer[String] = new scala.collection.mutable.ListBuffer[String]()
+    rest.++=(lines)
+    var yaml_string = buf.toString()
+    var options: DumperOptions = new DumperOptions()
+    options.setDefaultFlowStyle(DumperOptions.FlowStyle.BLOCK)
+    var yaml = new Yaml(options)
+    var ret: Yml = yaml.load(yaml_string).asInstanceOf[Yml]
+    src.close;
+    // We have to work around the Java collection idioms here
+    var intarr = ret.get("tags").asInstanceOf[java.util.ArrayList[String]]
+    tags.foreach(tag => if (intarr.indexOf(tag) == -1) intarr.add(tag))
+    ret.put("tags", intarr)
+    println(ret)
+    var fout = new FileWriter(f)
+    fout.write("---\n")
+    fout.write(yaml.dump(ret))
+    fout.write("---\n")
+    rest.foreach(chunk => fout.write(chunk+"\n"))
+    fout.flush
+    fout.close
+  }
+  def tag(p: Boolean, u: Boolean, pattern: Regex, tag: String*) = {
+    println("tagging "+pattern)
+    val posts_filter = "[a-zA-Z0-9].*\\.(md|html)".r
+    val published = new File("_posts").listFiles.filter(f => f.getName match { case posts_filter(post_type) => true; case _ => false }).filter(f =>
+      f.getName match { case pattern() => true; case _ => false }
+    )
+    val unpublished = new File("unpublished").listFiles.filter(f => f.getName match { case posts_filter(post_type) => true; case _ => false }).filter(f =>
+      f.getName match { case pattern() => true; case _ => false }
+    )
+    println("Applying tags: "+tag.toString)
+    if (p)
+      published.foreach(x => add_tags(x, tag: _*))
+    if (u)
+      unpublished.foreach(x => add_tags(x, tag: _*)) 
   }
   def tags_usage = {
     println("""
