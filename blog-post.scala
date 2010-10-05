@@ -3,6 +3,7 @@ import scala.io._
 import scala.collection.mutable._
 import java.nio._
 import java.lang.{ProcessBuilder => PB}
+import scala.util.matching.Regex
 
 import org.yaml.snakeyaml.Yaml
 
@@ -14,10 +15,94 @@ object blog_post {
       case _ => fname
     }
   }
-  def main(args: Array[String]) {
-    make_tags
+  def deslugify(fname: String): String = {
+    val deslug = "([^-]*)-([^-]*)-([^-]*)-(.*)\\.([^.]*)".r
+    fname match {
+      case deslug(y, m, d, n, e) => n
+      case _ => fname
+    }
   }
-  def make_tags = {
+  def main(args: Array[String]) {
+    if (args.length == 0)
+    {
+      usage
+      return
+    }
+    val help = "(help|-h|--help|-?|/h)".r
+    args(0) match {
+      case help(opt) => {
+        if (args.length == 1)
+          usage
+        else
+          args(1) match {
+            case "tags" => tags_usage
+            case "ls"   => ls_usage
+            case _      => usage
+          }
+      }
+      case "ls"   => {
+        var stack = args.slice(1, args.length)
+        var verbose = true
+        var show_published = true
+        var show_unpublished = false
+        var pattern = ".*".r
+        stack.foreach(x => x match {
+          case "-t"          => verbose = false
+          case "-v"          => verbose = true
+          case "-a"          => { show_published = true;  show_unpublished = true  }
+          case "-u"          => { show_published = false; show_unpublished = true  }
+          case "-p"          => { show_published = true;  show_unpublished = false }
+          case (pat: String) => pattern = pat.r
+        })
+        ls(verbose, show_published, show_unpublished, pattern)
+      }
+      case "tags" => tags
+      case _      => usage
+    }
+  }
+  def usage = {
+    println("""
+Usage: blog.sh [--version] [--help] COMMAND [Arguments]
+  The most commonly used commands are:
+    help     - Get help for a particular command
+    init     - Create a new empty blog
+    ls       - Show list of blogs
+    tag      - Tag a post
+    tags     - Regenerates tags from yaml headers in published posts.
+    mp       - Make a micro post from standard in
+    post     - Make a
+    publish  -
+    untag    - 
+    
+""")
+  }
+  def ls_usage = {
+    println("""
+Usage: blog.sh ls [-t|-v] [-p|-u|-a] [pattern]
+  List blog posts
+    -t            Print title only
+    -v (default)  Print full slug
+    -p            Print only published blog posts
+    -u            Print only unpublished blog posts
+    -a            Print all plog posts
+""")
+  }
+  def ls(verbose: Boolean = true, show_published: Boolean = true, show_unpublished: Boolean = false, pattern: Regex = ".*".r)  = {
+    val posts_filter = "[a-zA-Z0-9].*\\.(md|html)".r
+    val published = new File("_posts").listFiles.filter(f => f.getName match { case posts_filter(post_type) => true; case _ => false })
+    val unpublished = new File("unpublished").listFiles.filter(f => f.getName match { case posts_filter(post_type) => true; case _ => false })
+    if (show_published)
+      published.foreach(x => x.getName match { case pattern() => println(if (verbose) x.getName else deslugify(x.getName)); case _ =>  })
+    if (show_unpublished)
+      unpublished.foreach(x => x.getName match { case pattern() => println(x.getName); case _ =>  })
+  }
+  def tags_usage = {
+    println("""
+Usage: blog.sh tags
+    Regenerate the tags in the tags directory from the yaml headers of published posts.""")
+  }
+
+  def tags = {
     // clean tags directory
     val test = ".*\\.(xml|html)".r
     val to_clean = (new File("tags").listFiles.filter(x => x.getName match { case test(e) => true; case _ => false }))
