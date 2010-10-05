@@ -170,6 +170,8 @@ tags:""" + tags.foldLeft("")((x:String, y: String) => x + "\n- " + y) + """
     fout.write(body2)
     fout.flush
     fout.close
+    new PB("git", "add", path+name).start.waitFor
+    new PB("git", "commit", path+name, "-m", "Micro-post "+name).start.waitFor
   }
   def publish_usage = {
     println("""
