@@ -84,7 +84,7 @@ Usage: blog.sh ls [-t|-v] [-p|-u|-a] [pattern]
     -v (default)  Print full slug
     -p            Print only published blog posts
     -u            Print only unpublished blog posts
-    -a            Print all plog posts
+    -a            Print all blog posts
 """)
   }
   def ls(verbose: Boolean = true, show_published: Boolean = true, show_unpublished: Boolean = false, pattern: Regex = ".*".r)  = {
