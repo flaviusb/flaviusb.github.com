@@ -37,7 +37,7 @@ object blog_post {
           args(1) match {
             case "tags"    => tags_usage
             case "tag"     => tag_usage
-            case "untag"      => untag_usage
+            case "untag"   => untag_usage
             case "mp"      => mp_usage
             case "ls"      => ls_usage
             case "publish" => publish_usage
