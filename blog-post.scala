@@ -115,7 +115,7 @@ object blog_post {
               case "-d"          => { stack = stack.slice(1, stack.length); defer = true  }
               case "-t"          => { if (stack.length<2) { die = true } else { title = stack(1); stack = stack.slice(2, stack.length); skip = true; }  }
               case "-@"          => { if (stack.length<2) { die = true } else { tags = stack(1).split(","); stack = stack.slice(2, stack.length); skip = true; } }
-              case (a: String) => println(a)
+              case (a: String) => 
             }
           } else {
             skip = false
@@ -162,7 +162,6 @@ title: """ + title +"""
 tags:""" + tags.foldLeft("")((x:String, y: String) => x + "\n- " + y) + """
 ---
 """
-    println(header)
     var body2 = body
     if (body == "") {
       println("Enter blog post. Finish with a newline.")
@@ -258,7 +257,6 @@ Usage: blog.sh tag [-p|-u|-a] [pattern] [tag*]
     var intarr = ret.get("tags").asInstanceOf[java.util.ArrayList[String]]
     tags.foreach(tag => if (intarr.indexOf(tag) == -1) intarr.add(tag))
     ret.put("tags", intarr)
-    println(ret)
     var fout = new FileWriter(f)
     fout.write("---\n")
     fout.write(yaml.dump(ret))
@@ -268,7 +266,6 @@ Usage: blog.sh tag [-p|-u|-a] [pattern] [tag*]
     fout.close
   }
   def tag(p: Boolean, u: Boolean, pattern: Regex, tag: String*) = {
-    println("tagging "+pattern)
     val posts_filter = "[a-zA-Z0-9].*\\.(md|html)".r
     val published = new File("_posts").listFiles.filter(f => f.getName match { case posts_filter(post_type) => true; case _ => false }).filter(f =>
       f.getName match { case pattern() => true; case _ => false }
@@ -276,7 +273,6 @@ Usage: blog.sh tag [-p|-u|-a] [pattern] [tag*]
     val unpublished = new File("unpublished").listFiles.filter(f => f.getName match { case posts_filter(post_type) => true; case _ => false }).filter(f =>
       f.getName match { case pattern() => true; case _ => false }
     )
-    println("Applying tags: "+tag.toString)
     if (p)
       published.foreach(x => add_tags(x, tag: _*))
     if (u)
@@ -318,7 +314,6 @@ Usage: blog.sh untag [-p|-u|-a] [pattern] [tag*]
     var intarr = ret.get("tags").asInstanceOf[java.util.ArrayList[String]]
     tags.foreach(tag => while (intarr.indexOf(tag) != -1) intarr.remove(tag))
     ret.put("tags", intarr)
-    println(ret)
     var fout = new FileWriter(f)
     fout.write("---\n")
     fout.write(yaml.dump(ret))
@@ -328,7 +323,6 @@ Usage: blog.sh untag [-p|-u|-a] [pattern] [tag*]
     fout.close
   }
   def untag(p: Boolean, u: Boolean, pattern: Regex, tag: String*) = {
-    println("untagging "+pattern)
     val posts_filter = "[a-zA-Z0-9].*\\.(md|html)".r
     val published = new File("_posts").listFiles.filter(f => f.getName match { case posts_filter(post_type) => true; case _ => false }).filter(f =>
       f.getName match { case pattern() => true; case _ => false }
@@ -360,7 +354,6 @@ Usage: blog.sh tags
     val subfiles = dir_posts.listFiles
     type Yml = java.util.LinkedHashMap[String, Any] //Map[String, Either[String, Array[String]]]
     var data: MutableList[(String, Yml)] = new MutableList[(String, Yml)]()
-    println("Creating tag files.")
     val posts_filter = "[a-zA-Z0-9].*\\.(md|html)".r
     subfiles.filter(f => f.getName match { case posts_filter(post_type) => true; case _ => false }).foreach( f => {
       var src = Source.fromFile(f)
@@ -380,7 +373,6 @@ Usage: blog.sh tags
       data.+=((f.getName, ret))
       src.close;
     }) 
-    println(data)
     for((k, v) <- data) {
       var tags: Array[String] = new Array[String](1);
       tags = v.get("tags").asInstanceOf[java.util.ArrayList[String]].toArray(tags)
@@ -393,7 +385,6 @@ Usage: blog.sh tags
         tags2posts(tag) = pre;
       }
     }
-    println(tags2posts)
     /*for((tag, posts) <- tags2posts) {
       var tagfile = new File("tags/" + tag + ".html")
       var fout = new FileWriter(tagfile);
