@@ -110,12 +110,17 @@ object blog_post {
         var stack = args.slice(1, args.length)
         var skip = false;
         var die = false
-        args.slice(1, args.length).foreach(s => if (! skip) s match {
-          case "-d"          => { stack = stack.slice(1, stack.length); defer = true  }
-          case "-t"          => { if (stack.length<1) { die = true } else { title = stack(1); stack = stack.slice(2, stack.length); skip = true; }  }
-          case "-@"          => { if (stack.length<1) { die = true } else { tags = stack(1).split(","); stack = stack.slice(2, stack.length); skip = true; } }
-          case _ => 
-        } else skip = false)
+        args.slice(1, args.length).foreach(s => if (! skip) {
+            s match {
+              case "-d"          => { stack = stack.slice(1, stack.length); defer = true  }
+              case "-t"          => { if (stack.length<2) { die = true } else { title = stack(1); stack = stack.slice(2, stack.length); skip = true; }  }
+              case "-@"          => { if (stack.length<2) { die = true } else { tags = stack(1).split(","); stack = stack.slice(2, stack.length); skip = true; } }
+              case (a: String) => println(a)
+            }
+          } else {
+            skip = false
+          }
+        )
         if (! die)
           mp(defer, title, tags, if (stack.length > 0) stack(0) else "")
         else
