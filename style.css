@@ -25,3 +25,23 @@ ul.posts span, ul.posts span a {
 }
 
 .sidebox { float: right; }
+
+.sidebox a, .grey {
+  width: 75px;
+  height: 75px;
+  font-size: 3em;
+  border-radius:10px; -moz-border-radius:10px; -webkit-border-radius:10px; 
+  border: 1px solid #CCC;
+  line-height:75px;
+}
+.sidebox a {
+  color: #333;
+  background: #d5d5d5;
+}
+.grey {
+  color: #aaa;
+  background: #111;
+}
+.sidebox a:hover {
+  background: #aaa;
+}
