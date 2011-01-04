@@ -4,9 +4,9 @@
 flaviusb = '(Flaviusb with(
   handle: :flaviusb,
   name: "Justin Marsh",
-  about: "http://flaviusb.net/about/",
+  about: "http://flaviusb.net/about",
   writing: {
-    :blog    => "http://flaviusb.net/blog/",
+    :blog    => "http://flaviusb.net/blog",
     :twitter => ["@flaviusb", "http://flaviusb.net/tweets/"],
     :other   => "http://flaviusb.net/other/"
   },
