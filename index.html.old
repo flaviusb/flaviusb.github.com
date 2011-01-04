@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>print flaviusb</title>
+    <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'/>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <link rel="stylesheet" type="text/css" href="mono.css"/>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+    <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+    <meta name="google-site-verification" content="6y_kSRBbkvXwVRvnTJy7Dsy6J1ODLla2oHGJt2bmAew" />
+  </head>
+<body>
+<p><span class="pipevar">|</span>&nbsp;<span class="prevar">flaviusb</span>&nbsp;<span class="pipevar">|</span></p>
+<p><span class="comment">&quot;:flaviusb is a handle of Justin Marsh&quot;</span></p>
+<p>flaviusb =: AnaphoricCollectionBuilder new</p>
+<p>&nbsp;&nbsp;name: <span class="string">'Justin Marsh'</span>;</p>
+<p>&nbsp;&nbsp;about: <span class="string">'<a href="http://flaviusb.net/about">http://flaviusb.net/about</a>'</span>;</p>
+<p>&nbsp;&nbsp;writing</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;blog: <span class="string">'<a href="http://flaviusb.net/blog">http://flaviusb.net/blog</a>'</span>;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;twitter: <span class="string">'<a href="http://twitter.com/flaviusb">@flaviusb</a>'</span>;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;other: <span class="string">'http://flaviusb.net/other'</span>.;</p>
+<p>&nbsp;&nbsp;code</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;name: <span class="string">'OpenCell'</span>&nbsp;repo: <span class="string">'<a href="http://cellml-opencell.hg.sourceforge.net/hgweb/cellml-opencell/cellml-opencell">http://cellml-opencell.hg.sourceforge.net/hgweb/cellml-opencell/cellml-opencell</a>'</span>&nbsp;description: <span class="string">'A CellML Simulation and Editing environment'</span>&nbsp;documentation: <span class="string">'<a href="http://opencell.org">http://opencell.org</a>'</span>&nbsp;;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;name: <span class="string">'CellML API'</span>&nbsp;repo: <span class="string">'<a href="http://cellml-api.hg.sourceforge.net/hgweb/cellml-api/cellml-api">http://cellml-api.hg.sourceforge.net/hgweb/cellml-api/cellml-api</a>'</span>&nbsp;description: <span class="string">'The official CellML API'</span>&nbsp;;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;name: <span class="string">'CellML Metadata Editor'</span>&nbsp;repo: <span class="string">'<a href="http://github.com/flaviusb/metadata-editor">http://github.com/flaviusb/metadata-editor</a>'</span>&nbsp;description: <span class="string">'An editor for author metadata embedded in CellML files.'</span>&nbsp;documentation: <span class="string">'<a href="http://flaviusb.net/metadata-editor/">http://flaviusb.net/metadata-editor/</a>'</span> ;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;name: <span class="string">'LL'</span>&nbsp;repo: <span class="string">'<a href="http://github.com/flaviusb/LL">http://github.com/flaviusb/LL</a>'</span>&nbsp;description: <span class="string">'An experiment in web programming with pg</span><span class="escape">''</span><span class="string">s Arc'</span>;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;name: <span class="string">'other'</span>&nbsp;repo: <span class="string">'<a href="http://github.com/flaviusb">http://github.com/flaviusb</a>'</span>&nbsp;description: <span class="string">'The place my other code goes'</span>.;</p>
+<p>&nbsp;&nbsp;larp: <span class="string">'<a href="http://nexus.gen.nz">http://nexus.gen.nz</a>'</span>;</p>
+<p>&nbsp;&nbsp;cv: <span class="string">'<a href="http://flaviusb.net/cv">http://flaviusb.net/cv</a>'</span>.</p>
+</body>
+</html>
