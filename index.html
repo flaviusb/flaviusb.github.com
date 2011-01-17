@@ -20,7 +20,7 @@
   <span class="nv">whitelist</span> <span class="o">=</span> <span class="p">[]</span>
   <span class="o">$</span> <span class="o">=</span> <span class="nf">method</span><span class="p">(</span><span class="sd">&quot;Lazy way to initialise a new project of the specified type&quot;</span><span class="p">,</span>
     <span class="o">+</span><span class="ss">:slurp</span><span class="p">,</span>
-    <span class="n">slurp</span> <span class="n">each</span><span class="p">(</span><span class="n">kv</span><span class="p">,</span> <span class="p">(@</span><span class="n">whitelist</span> <span class="n">include?</span><span class="p">(</span><span class="n">kv</span> <span class="n">key</span><span class="p">))</span> <span class="n">ifTrue</span> <span class="p">@</span><span class="k">cell</span><span class="p">(</span><span class="n">kv</span> <span class="n">key</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="n">kv</span> <span class="n">value</span><span class="p">)))</span>
+    <span class="n">slurp</span> <span class="n">each</span><span class="p">(</span><span class="n">kv</span><span class="p">,</span> <span class="p">(@</span><span class="n">whitelist</span> <span class="n">include?</span><span class="p">(</span><span class="n">kv</span> <span class="n">key</span><span class="p">))</span> <span class="n">ifTrue</span><span class="p">(@</span><span class="k">cell</span><span class="p">(</span><span class="n">kv</span> <span class="n">key</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="n">kv</span> <span class="n">value</span><span class="p">))))</span>
 <span class="p">)</span>
 <span class="nv">Code</span> <span class="o">=</span> <span class="nc">Project</span> <span class="kr">with</span><span class="p">(</span>
   <span class="sx">whitelist:</span> <span class="p">[</span><span class="ss">:name</span><span class="p">,</span> <span class="ss">:repo</span><span class="p">,</span> <span class="ss">:description</span><span class="p">,</span> <span class="ss">:documentation</span><span class="p">]</span>
@@ -31,15 +31,15 @@
 
 <span class="c">;; Aspects of me</span>
 <span class="ni">Programmer</span>  <span class="o">=</span> <span class="nb">Origin</span> <span class="k">mimic</span> <span class="kr">with</span><span class="p">(</span>
-  <span class="sx">languages:</span> <span class="p">#(</span><span class="nc">JavaScript</span><span class="p">,</span> <span class="nc">Lisp</span><span class="p">,</span> <span class="nc">OCaml</span><span class="p">,</span> <span class="nc">Scala</span><span class="p">,</span> <span class="nc">Smalltalk</span><span class="p">,</span> <span class="nc">Ruby</span><span class="p">,</span> <span class="nc">Ioke</span><span class="p">,</span> <span class="nc">C</span><span class="p">)</span>
+  <span class="sx">languages:</span> <span class="o">#</span><span class="p">{</span><span class="nc">JavaScript</span><span class="p">,</span> <span class="nc">Lisp</span><span class="p">,</span> <span class="nc">OCaml</span><span class="p">,</span> <span class="nc">Scala</span><span class="p">,</span> <span class="nc">Smalltalk</span><span class="p">,</span> <span class="nc">Ruby</span><span class="p">,</span> <span class="nc">Ioke</span><span class="p">,</span> <span class="nc">C</span><span class="p">}</span>
 <span class="p">)</span>
 <span class="ni">Raver</span>       <span class="o">=</span> <span class="nb">Origin</span> <span class="k">mimic</span> <span class="kr">with</span><span class="p">(</span>
-  <span class="sx">music:</span> <span class="p">#(</span><span class="nc">ProgHouse</span><span class="p">,</span> <span class="nc">HardHouse</span><span class="p">,</span> <span class="nc">DubStep</span><span class="p">),</span>
-  <span class="sx">style:</span> <span class="p">#(</span><span class="nc">TekMaTek</span><span class="p">)</span>
+  <span class="sx">music:</span> <span class="o">#</span><span class="p">{</span><span class="nc">ProgHouse</span><span class="p">,</span> <span class="nc">HardHouse</span><span class="p">,</span> <span class="nc">DubStep</span><span class="p">},</span>
+  <span class="sx">style:</span> <span class="o">#</span><span class="p">{</span><span class="nc">TekMaTek</span><span class="p">}</span>
 <span class="p">)</span>
 <span class="ni">Philosopher</span> <span class="o">=</span> <span class="nb">Origin</span> <span class="k">mimic</span> <span class="kr">with</span><span class="p">(</span>
-  <span class="sx">school:</span> <span class="p">#(</span><span class="nc">FormalLogic</span><span class="p">,</span> <span class="nc">Analytic</span><span class="p">,</span> <span class="nc">BayesianRationalist</span><span class="p">),</span>
-  <span class="sx">ethic:</span>  <span class="p">#(</span><span class="nc">NeoNicomachean</span><span class="p">,</span> <span class="nc">Kantian</span><span class="p">,</span> <span class="nc">RuleUtilitarian</span><span class="p">)</span>
+  <span class="sx">school:</span> <span class="o">#</span><span class="p">{</span><span class="nc">FormalLogic</span><span class="p">,</span> <span class="nc">Analytic</span><span class="p">,</span> <span class="nc">BayesianRationalist</span><span class="p">},</span>
+  <span class="sx">ethic:</span>  <span class="o">#</span><span class="p">{</span><span class="nc">NeoNicomachean</span><span class="p">,</span> <span class="nc">Kantian</span><span class="p">,</span> <span class="nc">RuleUtilitarian</span><span class="p">}</span>
 <span class="p">)</span>
 
 <span class="c">;; I am a Philosopher by education, a Programmer by inclination, and a Raver by accident</span>

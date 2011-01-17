@@ -20,7 +20,7 @@ Project = Origin mimic do(
   whitelist = []
   $ = method("Lazy way to initialise a new project of the specified type",
     +:slurp,
-    slurp each(kv, (@whitelist include?(kv key)) ifTrue @cell(kv key) = (kv value)))
+    slurp each(kv, (@whitelist include?(kv key)) ifTrue(@cell(kv key) = (kv value))))
 )
 Code = Project with(
   whitelist: [:name, :repo, :description, :documentation]
@@ -31,15 +31,15 @@ Larp = Project with(
 
 ;; Aspects of me
 Programmer  = Origin mimic with(
-  languages: #(JavaScript, Lisp, OCaml, Scala, Smalltalk, Ruby, Ioke, C)
+  languages: #{JavaScript, Lisp, OCaml, Scala, Smalltalk, Ruby, Ioke, C}
 )
 Raver       = Origin mimic with(
-  music: #(ProgHouse, HardHouse, DubStep),
-  style: #(TekMaTek)
+  music: #{ProgHouse, HardHouse, DubStep},
+  style: #{TekMaTek}
 )
 Philosopher = Origin mimic with(
-  school: #(FormalLogic, Analytic, BayesianRationalist),
-  ethic:  #(NeoNicomachean, Kantian, RuleUtilitarian)
+  school: #{FormalLogic, Analytic, BayesianRationalist},
+  ethic:  #{NeoNicomachean, Kantian, RuleUtilitarian}
 )
 
 ;; I am a Philosopher by education, a Programmer by inclination, and a Raver by accident
