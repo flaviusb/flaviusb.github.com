@@ -11,7 +11,8 @@ flaviusb = '(Flaviusb with(
     :other   => "http://flaviusb.net/other/"
   },
   projects: [
-    Code $(name: "OpenCell", repo: "http://cellml-opencell.hg.sourceforge.net/hgweb/cellml-opencell/cellml-opencell", description: "A CellML Simulation and Editing environment", documentation: "http://opencell.org"),
+    Code $(name: "OpenCell", repo: "http://cellml-opencell.hg.sourceforge.net/hgweb/cellml-opencell/cellml-opencell", description: "A CellML Simulation and Editing environment", website: "http://opencell.org"),
+    Code $(name: "Byeloblog", repo: "https://github.com/flaviusb/Byeloblog", description: "A static site generator in Ioke", website: "http://byeloblog.net"),
     Larp $(name: "Nexus", system: "Storytelling", venue: "Mage: The Awakening", website: "http://nexus.gen.nz"),
   ]
 ))
@@ -23,7 +24,7 @@ Project = Origin mimic do(
     slurp each(kv, (@whitelist include?(kv key)) ifTrue(@cell(kv key) = (kv value))))
 )
 Code = Project with(
-  whitelist: [:name, :repo, :description, :documentation]
+  whitelist: [:name, :repo, :description, :website]
 )
 Larp = Project with(
   whitelist: [:name, :system, :venue, :website]
