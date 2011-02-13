@@ -5,7 +5,7 @@ jade = require 'jade'
 process.env.TZ = 'Pacific/Auckland'
 
 str2fancytext = (str) ->
-  str = str.replace(/&quot;http:\/\/[^&]*&quot;/g, (link) ->
+  str = str.replace(/&quot;https?:\/\/[^&]*&quot;/g, (link) ->
     "&quot;<a href=\"#{link[6...-6]}\">#{link[6...-6]}</a>&quot;")
   str = str.replace(/&quot;@[^&]*&quot;/g, (screenname) ->
     "&quot;<a href=\"http://twitter.com/#{screenname[7...-6]}\">#{screenname[6...-6]}</a>&quot;")
